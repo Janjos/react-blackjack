@@ -15,7 +15,11 @@ export function EnemyHand (props) {
       <Row display='flex' justifyContent='center'>
         {props.cards.map((card, i) => (
           <Offset key={card.id} left='-15px' top={`-${15 * i}px`}>
-            <CardComponent image={card.image} name={card.name} />
+            <CardComponent
+              image={card.image}
+              name={card.name}
+              backface={i === 1}
+            />
           </Offset>
         ))}
       </Row>

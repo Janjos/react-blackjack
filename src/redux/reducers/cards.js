@@ -2,15 +2,18 @@ import { initialState } from '../../constants/data/initialState'
 import { actionTypes } from '../actions/actionTypes'
 
 export default (state = initialState, action) => {
+  const { cards, cardsToPush } = getRandomCards(state.cardList, action.payload)
+
   switch (action.type) {
     case actionTypes.USER_GET_CARDS:
-      const { cards, cardsToPush } = getRandomCards(
-        state.cardList,
-        action.payload
-      )
-      console.log(cards, cardsToPush)
       return Object.assign({}, state, {
         userCards: [...state.userCards, ...cardsToPush],
+        cardList: cards
+      })
+
+    case actionTypes.ENEMY_GET_CARDS:
+      return Object.assign({}, state, {
+        enemyCards: [...state.enemyCards, ...cardsToPush],
         cardList: cards
       })
 
