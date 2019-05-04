@@ -11,3 +11,7 @@ export const Container = styled.div`
   padding: 15px 20px;
   display: ${props => (props.display ? props.display : 'block')};
 `
+export const Row = styled.div`
+  width: 100%;
+  display: ${props => (props.display ? props.display : 'block')};
+`
