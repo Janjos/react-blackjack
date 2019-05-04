@@ -10,7 +10,7 @@ export function PlayerHand (props) {
     <Container display='flex'>
       <Row display='flex'>
         {props.cards.map(card => (
-          <CardComponent key={card.id} image={card.image} name={card.id} />
+          <CardComponent key={card.id} image={card.image} name={card.name} />
         ))}
       </Row>
     </Container>
