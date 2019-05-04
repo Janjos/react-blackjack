@@ -5,7 +5,7 @@ import { PlayerHand } from './components/playerHand'
 import { connect } from 'react-redux'
 import * as actions from '../../redux/actions'
 
-function GameScreenAux (props) {
+function GameScreenUnconnected (props) {
   return (
     <FullScreen color={COLORS.GREEN}>
       {/*
@@ -22,4 +22,4 @@ function GameScreenAux (props) {
 export const GameScreen = connect(
   null,
   actions
-)(GameScreenAux)
+)(GameScreenUnconnected)
