@@ -7,7 +7,7 @@ import * as actions from '../../redux/actions'
 
 function GameScreenUnconnected (props) {
   function handleButton () {
-    props.userGetCards(2)
+    props.userGetCards(1)
   }
 
   return (

@@ -9,7 +9,6 @@ import { CardComponent } from '../../../sharedComponents/CardComponent'
 const Offset = styled.div`
   margin-left: ${props => props.left};
   margin-top: ${props => props.top};
-  transition: all 0.3s;
 `
 
 export function PlayerHand (props) {
