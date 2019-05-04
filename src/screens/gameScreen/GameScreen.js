@@ -14,12 +14,17 @@ function GameScreenUnconnected (props) {
       <playerHand />
       <menu />
     */}
-      <PlayerHand />
+      <PlayerHand cards={props.cards.userCards} />
     </FullScreen>
   )
 }
 
+const mapStateToProps = state => {
+  const { cards } = state
+  return { cards }
+}
+
 export const GameScreen = connect(
-  null,
+  mapStateToProps,
   actions
 )(GameScreenUnconnected)

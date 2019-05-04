@@ -11,7 +11,7 @@ const CardContainer = styled.div`
   }
 `
 
-export function Card (props) {
+export function CardComponent (props) {
   return (
     <CardContainer>
       <img src={props.image} alt={props.cardName} />
@@ -19,7 +19,7 @@ export function Card (props) {
   )
 }
 
-Card.propTypes = {
+CardComponent.propTypes = {
   image: PropTypes.string.isRequired,
   cardName: PropTypes.string.isRequired
 }
