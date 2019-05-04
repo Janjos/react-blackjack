@@ -1,7 +1,7 @@
 import { Card } from '../classes/Card'
 import * as cardImages from './cardImages'
 
-export default {
+const cardsObjects = {
   // Spades
   aceClubs: new Card('01c', cardImages.aceClubs, 1),
   aceDiamonds: new Card('01d', cardImages.aceDiamonds, 1),
@@ -72,3 +72,60 @@ export default {
   kingHearts: new Card('13h', cardImages.kingHearts, 13),
   kingSpades: new Card('13s', cardImages.kingSpades, 13)
 }
+
+const cardList = [
+  cardsObjects.aceClubs,
+  cardsObjects.aceDiamonds,
+  cardsObjects.aceHearts,
+  cardsObjects.aceSpades,
+  cardsObjects.twoClubs,
+  cardsObjects.twoDiamonds,
+  cardsObjects.twoHearts,
+  cardsObjects.twoSpades,
+  cardsObjects.threeClubs,
+  cardsObjects.threeDiamonds,
+  cardsObjects.threeHearts,
+  cardsObjects.threeSpades,
+  cardsObjects.fourClubs,
+  cardsObjects.fourDiamonds,
+  cardsObjects.fourHearts,
+  cardsObjects.fourSpades,
+  cardsObjects.fiveClubs,
+  cardsObjects.fiveDiamonds,
+  cardsObjects.fiveHearts,
+  cardsObjects.fiveSpades,
+  cardsObjects.sixClubs,
+  cardsObjects.sixDiamonds,
+  cardsObjects.sixHearts,
+  cardsObjects.sixSpades,
+  cardsObjects.sevenClubs,
+  cardsObjects.sevenDiamonds,
+  cardsObjects.sevenHearts,
+  cardsObjects.sevenSpades,
+  cardsObjects.eightClubs,
+  cardsObjects.eightDiamonds,
+  cardsObjects.eightHearts,
+  cardsObjects.eightSpades,
+  cardsObjects.nineClubs,
+  cardsObjects.nineDiamonds,
+  cardsObjects.nineHearts,
+  cardsObjects.nineSpades,
+  cardsObjects.tenClubs,
+  cardsObjects.tenDiamonds,
+  cardsObjects.tenHearts,
+  cardsObjects.tenSpades,
+  cardsObjects.jackClubs,
+  cardsObjects.jackDiamonds,
+  cardsObjects.jackHearts,
+  cardsObjects.jackSpades,
+  cardsObjects.queenClubs,
+  cardsObjects.queenDiamonds,
+  cardsObjects.queenHearts,
+  cardsObjects.queenSpades,
+  cardsObjects.kingClubs,
+  cardsObjects.kingDiamonds,
+  cardsObjects.kingHearts,
+  cardsObjects.kingSpades
+]
+
+export default cardList
