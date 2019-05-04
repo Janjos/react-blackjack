@@ -2,20 +2,21 @@ import { initialState } from '../../constants/data/initialState'
 import { actionTypes } from '../actions/actionTypes'
 
 export default (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case actionTypes.USER_GET_CARDS:
       const { cards, cardsToPush } = getRandomCards(
-        state.cards,
+        state.cardList,
         action.payload
-      ).cardsToPush
+      )
+      console.log(cards, cardsToPush)
       return Object.assign({}, state, {
         userCards: [...state.userCards, ...cardsToPush],
-        cards: cards
+        cardList: cards
       })
 
     case actionTypes.REMOVE_CARDS:
       return Object.assign({}, state, {
-        cards: removeCard(state.cards, action.payload)
+        cards: removeCard(state.cardList, action.payload)
       })
 
     default:
@@ -33,8 +34,10 @@ function getRandomCards (cards, numOfCards) {
 
   for (let i = 0; i < numOfCards; i++) {
     cardIndex = Math.random() * cards.length
-    cardsToPush.push(cards[cardIndex])
-    cards = removeCard(cards, cardsToPush.indexOf)
+    cardIndex = Math.floor(cardIndex)
+    const cardToPush = cards[cardIndex]
+    cardsToPush.push(cardToPush)
+    cards = removeCard(cards, cardToPush.id)
   }
 
   return { cards: cards, cardsToPush: cardsToPush }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducers from './redux/reducers'
@@ -19,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function App () {
-  const store = createStore(reducers, initialState)
+  const store = createStore(reducers, initialState, composeWithDevTools())
 
   return (
     <Provider store={store}>
