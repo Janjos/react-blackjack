@@ -2,23 +2,25 @@ import React from 'react'
 import { FullScreen } from '../../sharedComponents/StructureComponents'
 import { COLORS } from '../../constants/colors'
 import { PlayerHand } from './components/playerHand'
-import { connect } from 'react-redux'
-import * as actions from '../../redux/actions'
+import { useSelector, useDispatch } from 'react-redux'
 import { EnemyHand } from './components/enemyHand'
-import gameLogic from '../../gameLogic'
+import { playerGetCards, enemyGetCards } from '../../redux/actions'
 
-function GameScreenUnconnected (props) {
-  const enemyCards = props.cards.enemyCards
-  const playerCards = props.cards.playerCards
+export function GameScreen () {
+  const { cards } = useSelector(state => ({
+    cards: state.cards
+  }))
+  const enemyCards = cards.enemyCards
+  const playerCards = cards.playerCards
+
+  const dispatch = useDispatch()
 
   function handlePlayerButton () {
-    console.log('player')
-    props.playerGetCards(1)
+    dispatch(playerGetCards(1))
   }
 
   function handleEnemyButton () {
-    console.log('enemy')
-    props.enemyGetCards(1)
+    dispatch(enemyGetCards(1))
   }
 
   return (
@@ -32,13 +34,3 @@ function GameScreenUnconnected (props) {
     </FullScreen>
   )
 }
-
-const mapStateToProps = state => {
-  const { cards, player } = state
-  return { cards, player }
-}
-
-export const GameScreen = connect(
-  mapStateToProps,
-  actions
-)(GameScreenUnconnected)
