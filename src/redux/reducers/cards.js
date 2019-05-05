@@ -5,9 +5,9 @@ export default (state = initialState, action) => {
   const { cards, cardsToPush } = getRandomCards(state.cardList, action.payload)
 
   switch (action.type) {
-    case actionTypes.USER_GET_CARDS:
+    case actionTypes.PLAYER_GET_CARDS:
       return Object.assign({}, state, {
-        userCards: [...state.userCards, ...cardsToPush],
+        playerCards: [...state.playerCards, ...cardsToPush],
         cardList: cards
       })
 

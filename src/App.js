@@ -1,12 +1,14 @@
 import React from 'react'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import reducers from './redux/reducers'
-
 import { createGlobalStyle } from 'styled-components'
+
 import { GameScreen } from './screens/gameScreen/GameScreen'
 import { initialState } from './constants/data/initialState'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './redux/sagas'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -20,7 +22,15 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function App () {
-  const store = createStore(reducers, initialState, composeWithDevTools())
+  const sagaMiddleWare = createSagaMiddleware()
+
+  const store = createStore(
+    reducers,
+    initialState,
+    composeWithDevTools(applyMiddleware(sagaMiddleWare))
+  )
+
+  sagaMiddleWare.run(rootSaga)
 
   return (
     <Provider store={store}>
