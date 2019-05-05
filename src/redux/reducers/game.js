@@ -7,6 +7,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         gameRunning: true
       })
+    case actionTypes.STAND:
+      return Object.assign({}, state, {
+        playerStand: true
+      })
     default:
       return state
   }

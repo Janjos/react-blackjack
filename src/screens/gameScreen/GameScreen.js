@@ -32,7 +32,7 @@ export function GameScreen () {
       <HUD money={player.money} />
       <EnemyHand cards={enemyCards} />
       <PlayerHand cards={playerCards} />
-      <PlayerMenu />
+      <PlayerMenu standing={game.playerStand} />
     </FullScreen>
   )
 }

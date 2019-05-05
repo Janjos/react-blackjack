@@ -1,9 +1,6 @@
 import { GameResult } from './classes/GameResult'
-import { playerGetCards, enemyGetCards } from './redux/actions'
 
 export default {
-  startGame: dispatch => {},
-
   endTurn: (playerCards, enemyCards) => {
     return checkGameConditions(playerCards, enemyCards)
   }

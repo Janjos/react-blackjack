@@ -12,6 +12,7 @@ export const initialState = {
     result: new GameResult(false, false)
   },
   game: {
-    gameRunning: false
+    gameRunning: false,
+    playerStand: false
   }
 }

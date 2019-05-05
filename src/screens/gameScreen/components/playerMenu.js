@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { playerGetCards, enemyGetCards } from '../../../redux/actions'
+import { playerGetCards, playerStand } from '../../../redux/actions'
+import PropTypes from 'prop-types'
 
 import { Container, Row } from '../../../sharedComponents/StructureComponents'
 
@@ -11,23 +12,33 @@ const MenuContainer = styled.div`
   width: 100%;
 `
 
-export function PlayerMenu () {
+export function PlayerMenu (props) {
   const dispatch = useDispatch()
 
   function handlePlayerHit () {
     dispatch(playerGetCards(1))
   }
 
-  function handlePlayerStand () {}
+  function handlePlayerStand () {
+    dispatch(playerStand())
+  }
 
   return (
     <MenuContainer>
       <Container width='100%'>
         <Row display='flex' justifyContent='center'>
-          <button onClick={handlePlayerHit}>Hit</button>
-          <button onClick={handlePlayerStand}> Stand </button>
+          <button onClick={handlePlayerHit} disabled={props.standing}>
+            Hit
+          </button>
+          <button onClick={handlePlayerStand} disabled={props.standing}>
+            Stand
+          </button>
         </Row>
       </Container>
     </MenuContainer>
   )
+}
+
+PlayerMenu.propTypes = {
+  standing: PropTypes.bool
 }
