@@ -10,7 +10,8 @@ export const initialState = {
   player: {
     money: 1000,
     result: new GameResult(false, false)
-    // won: false,
-    // lose: false
+  },
+  game: {
+    gameRunning: false
   }
 }

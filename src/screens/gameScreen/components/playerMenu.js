@@ -14,20 +14,18 @@ const MenuContainer = styled.div`
 export function PlayerMenu () {
   const dispatch = useDispatch()
 
-  function handlePlayerButton () {
+  function handlePlayerHit () {
     dispatch(playerGetCards(1))
   }
 
-  function handleEnemyButton () {
-    dispatch(enemyGetCards(1))
-  }
+  function handlePlayerStand () {}
 
   return (
     <MenuContainer>
       <Container width='100%'>
         <Row display='flex' justifyContent='center'>
-          <button onClick={handlePlayerButton}>Add cards</button>
-          <button onClick={handleEnemyButton}>Add enemy cards</button>
+          <button onClick={handlePlayerHit}>Hit</button>
+          <button onClick={handlePlayerStand}> Stand </button>
         </Row>
       </Container>
     </MenuContainer>

@@ -24,7 +24,7 @@ const ResultText = styled.h1`
 
 export function GameResultNotification (props) {
   return (
-    <NotificationContainer hidden={!(props.result.win || props.result.loose)}>
+    <NotificationContainer hidden={!(props.result.win || props.result.lose)}>
       <div>
         {props.result.win && (
           <div>

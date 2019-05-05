@@ -1,5 +1,11 @@
 import { actionTypes } from './actionTypes'
 
+export function startGame () {
+  return {
+    type: actionTypes.START_GAME
+  }
+}
+
 export function playerGetCards (numberOfCards) {
   return {
     type: actionTypes.PLAYER_GET_CARDS,
@@ -30,5 +36,11 @@ export function playerWin () {
 export function playerLose () {
   return {
     type: actionTypes.LOSE
+  }
+}
+
+export function playerStand () {
+  return {
+    type: actionTypes.STAND
   }
 }

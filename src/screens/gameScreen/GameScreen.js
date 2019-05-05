@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { COLORS } from '../../constants/colors'
 import { FullScreen } from '../../sharedComponents/StructureComponents'
@@ -8,15 +8,23 @@ import { EnemyHand } from './components/enemyHand'
 import { HUD } from './components/hud'
 import { GameResultNotification } from '../../sharedComponents/notifications/gameResultNotification'
 import { PlayerMenu } from './components/playerMenu'
+import { startGame } from '../../redux/actions'
 
 export function GameScreen () {
-  const { cards, player } = useSelector(state => ({
+  const { cards, player, game } = useSelector(state => ({
     cards: state.cards,
-    player: state.player
+    player: state.player,
+    game: state.game
   }))
 
   const enemyCards = cards.enemyCards
   const playerCards = cards.playerCards
+
+  // TODO refactory start game logic
+  const dispatch = useDispatch()
+  if (!game.gameRunning) {
+    dispatch(startGame())
+  }
 
   return (
     <FullScreen color={COLORS.GREEN}>
