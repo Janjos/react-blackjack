@@ -1,14 +1,17 @@
 import React from 'react'
-import { FullScreen } from '../../sharedComponents/StructureComponents'
+import { playerGetCards, enemyGetCards } from '../../redux/actions'
+
 import { COLORS } from '../../constants/colors'
+import { FullScreen } from '../../sharedComponents/StructureComponents'
 import { PlayerHand } from './components/playerHand'
 import { useSelector, useDispatch } from 'react-redux'
 import { EnemyHand } from './components/enemyHand'
-import { playerGetCards, enemyGetCards } from '../../redux/actions'
+import { HUD } from './components/hud'
 
 export function GameScreen () {
-  const { cards } = useSelector(state => ({
-    cards: state.cards
+  const { cards, player } = useSelector(state => ({
+    cards: state.cards,
+    player: state.player
   }))
   const enemyCards = cards.enemyCards
   const playerCards = cards.playerCards
@@ -28,7 +31,7 @@ export function GameScreen () {
       {/* TODO Remove this buttons */}
       <button onClick={handlePlayerButton}>Add cards</button>
       <button onClick={handleEnemyButton}>Add enemy cards</button>
-
+      <HUD money={player.money} />
       <EnemyHand cards={enemyCards} />
       <PlayerHand cards={playerCards} />
     </FullScreen>
