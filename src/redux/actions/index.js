@@ -44,3 +44,9 @@ export function playerStand () {
     type: actionTypes.STAND
   }
 }
+
+export function playerDraw () {
+  return {
+    type: actionTypes.DRAW
+  }
+}

@@ -1,6 +1,7 @@
 export class GameResult {
-  constructor (win, lose) {
+  constructor (win, lose, draw) {
     this.win = win
     this.lose = lose
+    this.draw = draw
   }
 }

@@ -36,6 +36,11 @@ export function GameResultNotification (props) {
             <ResultText> You Lose! </ResultText>
           </div>
         )}
+        {props.result.draw && (
+          <div>
+            <ResultText> Draw! </ResultText>
+          </div>
+        )}
       </div>
     </NotificationContainer>
   )

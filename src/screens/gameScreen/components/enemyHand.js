@@ -19,7 +19,7 @@ export function EnemyHand (props) {
               image={card.image}
               name={card.name}
               // The second enemy card, at a first time, have to be hidden
-              backface={i === 1}
+              // backface={i === 1}
             />
           </Offset>
         ))}
