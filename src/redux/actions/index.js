@@ -27,8 +27,8 @@ export function playerWin () {
   }
 }
 
-export function playerLoose () {
+export function playerLose () {
   return {
-    type: actionTypes.LOOSE
+    type: actionTypes.LOSE
   }
 }

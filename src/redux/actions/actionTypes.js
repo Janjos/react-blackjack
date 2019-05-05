@@ -6,6 +6,6 @@ export const actionTypes = {
   REMOVE_CARDS: 'REMOVE_CARDS',
   DOUBLE: 'DOUBLE',
   STAND: 'STAND',
-  LOOSE: 'LOOSE',
+  LOSE: 'LOSE',
   WIN: 'WIN'
 }

@@ -7,12 +7,14 @@ import { PlayerHand } from './components/playerHand'
 import { useSelector, useDispatch } from 'react-redux'
 import { EnemyHand } from './components/enemyHand'
 import { HUD } from './components/hud'
+import { GameResultNotification } from '../../sharedComponents/notifications/gameResultNotification'
 
 export function GameScreen () {
   const { cards, player } = useSelector(state => ({
     cards: state.cards,
     player: state.player
   }))
+
   const enemyCards = cards.enemyCards
   const playerCards = cards.playerCards
 
@@ -31,6 +33,7 @@ export function GameScreen () {
       {/* TODO Remove this buttons */}
       <button onClick={handlePlayerButton}>Add cards</button>
       <button onClick={handleEnemyButton}>Add enemy cards</button>
+      <GameResultNotification result={player.result} />
       <HUD money={player.money} />
       <EnemyHand cards={enemyCards} />
       <PlayerHand cards={playerCards} />

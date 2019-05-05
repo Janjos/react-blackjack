@@ -1,3 +1,5 @@
+import { GameResult } from './classes/GameResult'
+
 export default {
   endTurn: (playerCards, enemyCards) => {
     return checkGameConditions(playerCards, enemyCards)
@@ -11,13 +13,13 @@ function sumAllCards (cards) {
 function checkGameConditions (playerCards, enemyCards) {
   const playerPoints = sumAllCards(playerCards)
   const enemyPoints = sumAllCards(enemyCards)
-  let result = { win: false, loose: false }
+  let result = new GameResult(false, false)
   console.log(playerPoints, enemyPoints)
 
   if (playerPoints === 21 || enemyPoints > 21) {
     result.win = true
   } else if (enemyPoints === 21 || playerPoints > 21) {
-    result.loose = true
+    result.lose = true
   }
 
   return result

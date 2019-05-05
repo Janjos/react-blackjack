@@ -1,4 +1,5 @@
 import cardList from '../data/cardList'
+import { GameResult } from '../../classes/GameResult'
 
 export const initialState = {
   cards: {
@@ -8,7 +9,8 @@ export const initialState = {
   },
   player: {
     money: 1000,
-    won: false,
-    loose: false
+    result: new GameResult(false, false)
+    // won: false,
+    // lose: false
   }
 }
