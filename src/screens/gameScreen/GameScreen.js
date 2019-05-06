@@ -26,9 +26,12 @@ export function GameScreen () {
     dispatch(startGame())
   }
 
+  const showNotification =
+    player.result.win || player.result.lose || player.result.draw
+
   return (
     <FullScreen color={COLORS.GREEN}>
-      <GameResultNotification result={player.result} />
+      {showNotification && <GameResultNotification result={player.result} />}
       <HUD money={player.money} />
       <EnemyHand cards={enemyCards} />
       <PlayerHand cards={playerCards} />

@@ -8,38 +8,32 @@ const NotificationContainer = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  left: calc(50% - 50vw);
-  top: calc(50% - 50vh);
+  left: 0;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  visibility: ${props => (props.hidden ? 'hidden' : 'auto')};
+  background: ${COLORS.SHADOW};
 `
 const ResultText = styled.h1`
   color: white;
-  text-shadow: -2px 4px 0px ${COLORS.SHADOW};
+  text-shadow: -2px 4px 0px ${props => props.color};
   margin: 0;
 `
 
 export function GameResultNotification (props) {
   return (
-    <NotificationContainer hidden={!(props.result.win || props.result.lose)}>
+    <NotificationContainer>
       <div>
         {props.result.win && (
-          <div>
-            <ResultText> You Win! </ResultText>
-          </div>
+          <ResultText color={COLORS.BLUE}> You Win! </ResultText>
         )}
         {props.result.lose && (
-          <div>
-            <ResultText> You Lose! </ResultText>
-          </div>
+          <ResultText color={COLORS.RED}> You Lose! </ResultText>
         )}
         {props.result.draw && (
-          <div>
-            <ResultText> Draw! </ResultText>
-          </div>
+          <ResultText color={COLORS.GREEN}> Draw! </ResultText>
         )}
       </div>
     </NotificationContainer>

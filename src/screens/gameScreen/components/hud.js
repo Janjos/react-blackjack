@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { COLORS } from '../../../constants/colors'
 
 const HudContainer = styled.div`
   position: absolute;
@@ -10,6 +11,7 @@ const HudContainer = styled.div`
   & h1 {
     color: white;
     margin: 0;
+    text-shadow: -5px 5px 0px ${COLORS.SHADOW};
   }
 `
 

@@ -28,10 +28,10 @@ export function PlayerMenu (props) {
       <Container width='100%'>
         <Row display='flex' justifyContent='center'>
           <button onClick={handlePlayerHit} disabled={props.standing}>
-            Hit
+            HIT
           </button>
           <button onClick={handlePlayerStand} disabled={props.standing}>
-            Stand
+            STAND
           </button>
         </Row>
       </Container>
