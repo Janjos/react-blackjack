@@ -10,6 +10,14 @@ const NotificationContainer = posed.div({
   hidden: { opacity: 0 }
 })
 
+const ResultText = posed.h1({
+  visible: {
+    marginTop: '0',
+    transition: { duration: 300, delay: 500, ease: 'easeOut' }
+  },
+  hidden: { marginTop: '-100vh' }
+})
+
 const StyledNotificationContainer = styled(NotificationContainer)`
   position: absolute;
   width: 100vw;
@@ -22,26 +30,43 @@ const StyledNotificationContainer = styled(NotificationContainer)`
   z-index: 10;
   background: ${COLORS.SHADOW};
 `
-const ResultText = styled.h1`
+const ResultTextStyled = styled(ResultText)`
+  font-size: 22px;
   color: white;
   text-shadow: -2px 4px 0px ${props => props.color};
   margin: 0;
 `
 
 export function GameResultNotification (props) {
-  let showNotification = false
-
   return (
     <StyledNotificationContainer pose='visible' initialPose='hidden'>
       <div>
         {props.result.win && (
-          <ResultText color={COLORS.BLUE}> You Win! </ResultText>
+          <ResultTextStyled
+            pose='visible'
+            initialPose='hidden'
+            color={COLORS.BLUE}
+          >
+            You Win!
+          </ResultTextStyled>
         )}
         {props.result.lose && (
-          <ResultText color={COLORS.RED}> You Lose! </ResultText>
+          <ResultTextStyled
+            pose='visible'
+            initialPose='hidden'
+            color={COLORS.RED}
+          >
+            You Lose!
+          </ResultTextStyled>
         )}
         {props.result.draw && (
-          <ResultText color={COLORS.GREEN}> Draw! </ResultText>
+          <ResultTextStyled
+            pose='visible'
+            initialPose='hidden'
+            color={COLORS.GREEN}
+          >
+            Draw!
+          </ResultTextStyled>
         )}
       </div>
     </StyledNotificationContainer>

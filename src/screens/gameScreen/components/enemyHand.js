@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { Container, Row } from '../../../sharedComponents/StructureComponents'
 import { CardComponent } from '../../../sharedComponents/CardComponent'
@@ -19,11 +20,15 @@ export function EnemyHand (props) {
               image={card.image}
               name={card.name}
               // The second enemy card, at a first time, have to be hidden
-              // backface={i === 1}
+              backface={i === 1 && !props.showSecondCard}
             />
           </Offset>
         ))}
       </Row>
     </Container>
   )
+}
+
+EnemyHand.propTypes = {
+  showSecondCard: PropTypes.bool.isRequired
 }

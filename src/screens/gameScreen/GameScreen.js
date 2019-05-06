@@ -33,7 +33,7 @@ export function GameScreen () {
     <FullScreen color={COLORS.GREEN}>
       {showNotification && <GameResultNotification result={player.result} />}
       <HUD money={player.money} />
-      <EnemyHand cards={enemyCards} />
+      <EnemyHand cards={enemyCards} showSecondCard={game.playerStand} />
       <PlayerHand cards={playerCards} />
       <PlayerMenu standing={game.playerStand} />
     </FullScreen>
