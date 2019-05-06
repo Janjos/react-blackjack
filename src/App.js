@@ -10,7 +10,13 @@ import { initialState } from './constants/data/initialState'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './redux/sagas'
 
+const cursorImage = require('./assets/images/interface/white-cursor.png')
+
 const GlobalStyle = createGlobalStyle`
+  * {
+    cursor: url(${cursorImage}), default;
+  }
+
   body {
     margin: 0;
     padding: 0;
