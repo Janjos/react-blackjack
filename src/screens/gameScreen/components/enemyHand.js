@@ -15,7 +15,7 @@ export function EnemyHand (props) {
     <Container display='flex'>
       <Row display='flex' justifyContent='center'>
         {props.cards.map((card, i) => (
-          <Offset key={card.id} left='-15px' top={`-${15 * i}px`}>
+          <Offset key={card.id} left='-20px' top={`-${8 * i}px`}>
             <CardComponent
               image={card.image}
               name={card.name}

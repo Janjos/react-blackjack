@@ -1,4 +1,4 @@
-import { put, takeEvery, select } from 'redux-saga/effects'
+import { put, takeEvery, select, delay } from 'redux-saga/effects'
 import { actionTypes } from './actions/actionTypes'
 import gameLogic from '../gameLogic'
 import {
@@ -21,20 +21,24 @@ function * startGame () {
   yield put(enemyGetCards(2))
 }
 
-function * endTurn (enemyStand = false) {
+function * endTurn () {
   const state = yield select()
   const playerCards = state.cards.playerCards
   const enemyCards = state.cards.enemyCards
 
   let gameResult = yield gameLogic.endTurn(playerCards, enemyCards)
 
+  // Delay to create more friendly gameplay
+  yield delay(800)
+
   if (gameResult.result.win) yield put(playerWin())
   if (gameResult.result.lose) yield put(playerLose())
 }
 
 function * finalTurn () {
-  console.log('FINAL')
   const state = yield select()
+  // Delay to create more friendly gameplay
+  yield delay(800)
 
   let gameResult = yield gameLogic.endTurn(
     state.cards.playerCards,
@@ -58,6 +62,9 @@ function * enemyTurn () {
   )
 
   while (enemyWillHit) {
+    // Delay to create more friendly gameplay
+    yield delay(500)
+
     yield put(enemyGetCards(1))
     state = yield select()
     enemyWillHit = yield gameLogic.enemyWillHit(
