@@ -22,6 +22,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
   div {
     box-sizing: border-box;
   }
