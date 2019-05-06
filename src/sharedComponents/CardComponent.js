@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { COLORS } from '../constants/colors'
 
-const cardBack = require('../images/cards/back01.gif')
+const cardBack = require('../assets/images/cards/back01.gif')
 
 const CardContainer = styled.div`
   & img {
