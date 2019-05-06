@@ -21,3 +21,6 @@ export const Row = styled.div`
   justify-content: ${props =>
     props.justifyContent ? props.justifyContent : 'flex-start'};
 `
+export const Blurry = styled.div`
+  filter: blur(0.25px);
+`

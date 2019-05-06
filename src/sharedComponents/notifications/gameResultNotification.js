@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { GameResult } from '../../classes/GameResult'
 import styled from 'styled-components'
 import { COLORS } from '../../constants/colors'
+import posed from 'react-pose'
 
-const NotificationContainer = styled.div`
+const NotificationContainer = posed.div({
+  visible: { opacity: 1, transition: { duration: 300 } },
+  hidden: { opacity: 0 }
+})
+
+const StyledNotificationContainer = styled(NotificationContainer)`
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -23,8 +29,10 @@ const ResultText = styled.h1`
 `
 
 export function GameResultNotification (props) {
+  let showNotification = false
+
   return (
-    <NotificationContainer>
+    <StyledNotificationContainer pose='visible' initialPose='hidden'>
       <div>
         {props.result.win && (
           <ResultText color={COLORS.BLUE}> You Win! </ResultText>
@@ -36,7 +44,7 @@ export function GameResultNotification (props) {
           <ResultText color={COLORS.GREEN}> Draw! </ResultText>
         )}
       </div>
-    </NotificationContainer>
+    </StyledNotificationContainer>
   )
 }
 
