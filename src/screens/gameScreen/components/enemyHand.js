@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { Container, Row } from '../../../sharedComponents/StructureComponents'
+import { Container, Row } from '../../../sharedComponents/structureComponents'
 import { CardComponent } from '../../../sharedComponents/CardComponent'
 
 const Offset = styled.div`

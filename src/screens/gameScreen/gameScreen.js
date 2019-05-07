@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
 import { COLORS } from '../../constants/colors'
-import { FullScreen } from '../../sharedComponents/StructureComponents'
+import { FullScreen } from '../../sharedComponents/structureComponents'
 import { PlayerHand } from './components/playerHand'
 import { EnemyHand } from './components/enemyHand'
 import { HUD } from './components/hud'

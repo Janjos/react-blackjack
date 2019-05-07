@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { playerGetCards, playerStand } from '../../../redux/actions'
 import PropTypes from 'prop-types'
 
-import { Container, Row } from '../../../sharedComponents/StructureComponents'
+import { Container, Row } from '../../../sharedComponents/structureComponents'
 
 const MenuContainer = styled.div`
   position: fixed;
