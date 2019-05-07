@@ -8,6 +8,7 @@ import {
   enemyGetCards,
   playerDraw
 } from './actions'
+import { endGameDelay, cardAnimationTime } from '../constants/animations'
 
 export default function * root () {
   yield takeEvery(actionTypes.PLAYER_GET_CARDS, endTurn)
@@ -29,7 +30,7 @@ function * endTurn () {
   let gameResult = yield gameLogic.endTurn(playerCards, enemyCards)
 
   // Delay to create more friendly gameplay
-  yield delay(800)
+  yield delay(endGameDelay)
 
   if (gameResult.result.win) yield put(playerWin())
   if (gameResult.result.lose) yield put(playerLose())
@@ -38,7 +39,7 @@ function * endTurn () {
 function * finalTurn () {
   const state = yield select()
   // Delay to create more friendly gameplay
-  yield delay(800)
+  yield delay(endGameDelay)
 
   let gameResult = yield gameLogic.endTurn(
     state.cards.playerCards,
@@ -63,7 +64,7 @@ function * enemyTurn () {
 
   while (enemyWillHit) {
     // Delay to create more friendly gameplay
-    yield delay(500)
+    yield delay(cardAnimationTime)
 
     yield put(enemyGetCards(1))
     state = yield select()
