@@ -80,19 +80,6 @@ export function BetModal () {
             ))}
           </Row>
         </Container>
-        <Container>
-          <Row display='flex' justifyContent='center'>
-            <ModalText>
-              <h1>Current bet:</h1>
-              <h2>
-                <span>R$</span>200
-              </h2>
-            </ModalText>
-          </Row>
-          <Row display='flex' justifyContent='center'>
-            <BasicButton> CONFIRM </BasicButton>
-          </Row>
-        </Container>
       </Modal>
     </NotificationContainer>
   )
