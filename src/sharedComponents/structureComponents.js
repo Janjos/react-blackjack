@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import posed from 'react-pose'
 
 export const FullScreen = styled.div`
   width: 100vw;
@@ -24,13 +25,19 @@ export const Row = styled.div`
 export const Blurry = styled.div`
   filter: blur(0.5px);
 `
-export const BasicButton = styled.button`
+export const ButttonClickAnm = posed.div({
+  pressable: true,
+  init: { scale: 1 },
+  press: { scale: 0.9 }
+})
+
+export const BasicButton = styled(ButttonClickAnm)`
   background: #eef;
   box-shadow: inset 0 -3px 0 rgba(50, 50, 200, 0.6);
   border: solid 3px #333;
   color: #333;
   padding: 8px 20px;
-  margin: 5px 8px;
+  margin: 0 8px;
 `
 
 export const ScanLinesFilter = styled.div`
