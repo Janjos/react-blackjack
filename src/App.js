@@ -9,7 +9,7 @@ import { initialState } from './constants/data/initialState'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './redux/sagas'
 import { GlobalStyle } from './sharedComponents/globalStyle'
-import { Blurry } from './sharedComponents/StructureComponents'
+import { Blurry, ScanLinesFilter } from './sharedComponents/StructureComponents'
 
 export default function App () {
   const sagaMiddleWare = createSagaMiddleware()
@@ -24,10 +24,12 @@ export default function App () {
 
   return (
     <Provider store={store}>
-      <Blurry>
-        <GlobalStyle />
-        <GameScreen />
-      </Blurry>
+      <ScanLinesFilter>
+        <Blurry>
+          <GlobalStyle />
+          <GameScreen />
+        </Blurry>
+      </ScanLinesFilter>
     </Provider>
   )
 }
