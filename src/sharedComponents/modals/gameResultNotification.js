@@ -5,10 +5,7 @@ import styled from 'styled-components'
 import { COLORS } from '../../constants/colors'
 import posed from 'react-pose'
 
-const NotificationContainer = posed.div({
-  visible: { opacity: 1, transition: { duration: 300 } },
-  hidden: { opacity: 0 }
-})
+import { NotificationContainer } from './modalsSharedComponents'
 
 const ResultText = posed.h1({
   visible: {
@@ -18,18 +15,6 @@ const ResultText = posed.h1({
   hidden: { marginTop: '-100vh' }
 })
 
-const StyledNotificationContainer = styled(NotificationContainer)`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  background: ${COLORS.SHADOW};
-`
 const ResultTextStyled = styled(ResultText)`
   font-size: 22px;
   color: white;
@@ -39,7 +24,7 @@ const ResultTextStyled = styled(ResultText)`
 
 export function GameResultNotification (props) {
   return (
-    <StyledNotificationContainer pose='visible' initialPose='hidden'>
+    <NotificationContainer pose='visible' initialPose='hidden'>
       <div>
         {props.result.win && (
           <ResultTextStyled
@@ -69,7 +54,7 @@ export function GameResultNotification (props) {
           </ResultTextStyled>
         )}
       </div>
-    </StyledNotificationContainer>
+    </NotificationContainer>
   )
 }
 

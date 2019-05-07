@@ -4,7 +4,7 @@ import { Card } from '../../../classes/Card'
 import styled from 'styled-components'
 
 import { Container, Row } from '../../../sharedComponents/structureComponents'
-import { CardComponent } from '../../../sharedComponents/CardComponent'
+import { CardComponent } from '../../../sharedComponents/cardComponent'
 
 const Offset = styled.div`
   margin-left: ${props => props.left};

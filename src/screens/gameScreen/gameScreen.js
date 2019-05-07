@@ -7,9 +7,10 @@ import { FullScreen } from '../../sharedComponents/structureComponents'
 import { PlayerHand } from './components/playerHand'
 import { EnemyHand } from './components/enemyHand'
 import { HUD } from './components/hud'
-import { GameResultNotification } from '../../sharedComponents/notifications/gameResultNotification'
+import { GameResultNotification } from '../../sharedComponents/modals/gameResultNotification'
 import { PlayerMenu } from './components/playerMenu'
 import { startGame } from '../../redux/actions'
+import { BetModal } from '../../sharedComponents/modals/betModal'
 
 const HandsContainer = styled.div`
   display: flex;
@@ -42,6 +43,9 @@ export function GameScreen () {
   return (
     <FullScreen color={COLORS.GREEN}>
       {showNotification && <GameResultNotification result={player.result} />}
+
+      <BetModal />
+
       <HUD money={player.money} />
       <HandsContainer>
         <HandRow>

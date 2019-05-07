@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { Container, Row } from '../../../sharedComponents/structureComponents'
-import { CardComponent } from '../../../sharedComponents/CardComponent'
+import { CardComponent } from '../../../sharedComponents/cardComponent'
 
 const Offset = styled.div`
   margin-left: ${props => props.left};

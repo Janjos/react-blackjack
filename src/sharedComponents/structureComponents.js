@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import posed from 'react-pose'
+import { COLORS } from '../constants/colors'
 
 export const FullScreen = styled.div`
   width: 100vw;
@@ -14,6 +15,8 @@ export const Container = styled.div`
   height: ${props => (props.height ? props.height : 'auto')};
   padding: 15px 20px;
   display: ${props => (props.display ? props.display : 'block')};
+  flex-direction: ${props =>
+    props.flexDirection ? props.flexDirection : 'initial'};
 `
 
 export const Row = styled.div`
@@ -33,7 +36,7 @@ export const ButttonClickAnm = posed.button({
 
 export const BasicButton = styled(ButttonClickAnm)`
   background: #eef;
-  box-shadow: inset 0 -3px 0 rgba(50, 50, 200, 0.6);
+  box-shadow: inset 0 -3px 0 ${COLORS.LIGHT_BLUE};
   border: solid 3px #333;
   color: #333;
   padding: 8px 20px;
