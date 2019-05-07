@@ -67,13 +67,13 @@ export function HUD (props) {
       <MoneyHud>
         <h1> money </h1>
         <h2>
-          <span> R$ </span> {props.money}
+          <span> $ </span> {props.money}
         </h2>
       </MoneyHud>
       <BetHud>
         <h1> bet </h1>
         <h2>
-          <span> R$ </span> 100
+          <span> $ </span> 100
         </h2>
       </BetHud>
     </HudContainer>

@@ -72,7 +72,7 @@ export function BetModal () {
               <BetOption>
                 <ModalText>
                   <h2>
-                    <span>R$</span>
+                    <span>$</span>
                     {value}
                   </h2>
                 </ModalText>
