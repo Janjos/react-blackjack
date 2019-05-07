@@ -9,5 +9,6 @@ export const actionTypes = {
   STAND: 'STAND',
   LOSE: 'LOSE',
   WIN: 'WIN',
-  DRAW: 'DRAW'
+  DRAW: 'DRAW',
+  BUTTONS_ENABLED: 'BUTTONS_ENABLED'
 }

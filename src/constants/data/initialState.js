@@ -13,6 +13,7 @@ export const initialState = {
   },
   game: {
     gameRunning: false,
-    playerStand: false
+    playerStand: false,
+    buttonsEnabled: true
   }
 }

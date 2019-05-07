@@ -11,6 +11,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         playerStand: true
       })
+    case actionTypes.BUTTONS_ENABLED:
+      return Object.assign({}, state, {
+        buttonsEnabled: action.paylod
+      })
     default:
       return state
   }

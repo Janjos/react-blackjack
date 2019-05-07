@@ -50,3 +50,10 @@ export function playerDraw () {
     type: actionTypes.DRAW
   }
 }
+
+export function disableButton (buttonState) {
+  return {
+    type: actionTypes.DISABLE_BUTTONS,
+    payload: buttonState
+  }
+}
