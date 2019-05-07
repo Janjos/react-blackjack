@@ -4,7 +4,11 @@ import { useDispatch } from 'react-redux'
 import { playerGetCards, playerStand } from '../../../redux/actions'
 import PropTypes from 'prop-types'
 
-import { Container, Row } from '../../../sharedComponents/structureComponents'
+import {
+  Container,
+  Row,
+  BasicButton
+} from '../../../sharedComponents/structureComponents'
 
 const MenuContainer = styled.div`
   position: fixed;
@@ -27,12 +31,12 @@ export function PlayerMenu (props) {
     <MenuContainer>
       <Container width='100%'>
         <Row display='flex' justifyContent='center'>
-          <button onClick={handlePlayerHit} disabled={props.standing}>
+          <BasicButton onClick={handlePlayerHit} disabled={props.standing}>
             HIT
-          </button>
-          <button onClick={handlePlayerStand} disabled={props.standing}>
+          </BasicButton>
+          <BasicButton onClick={handlePlayerStand} disabled={props.standing}>
             STAND
-          </button>
+          </BasicButton>
         </Row>
       </Container>
     </MenuContainer>
