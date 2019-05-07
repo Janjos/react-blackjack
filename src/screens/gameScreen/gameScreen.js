@@ -51,7 +51,7 @@ export function GameScreen () {
           <PlayerHand cards={playerCards} />
         </HandRow>
       </HandsContainer>
-      <PlayerMenu standing={game.playerStand} />
+      <PlayerMenu enabled={game.buttonsEnabled} />
     </FullScreen>
   )
 }

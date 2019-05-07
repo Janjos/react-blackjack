@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
       })
     case actionTypes.BUTTONS_ENABLED:
       return Object.assign({}, state, {
-        buttonsEnabled: action.paylod
+        buttonsEnabled: action.payload
       })
     default:
       return state

@@ -25,7 +25,7 @@ export const Row = styled.div`
 export const Blurry = styled.div`
   filter: blur(0.5px);
 `
-export const ButttonClickAnm = posed.div({
+export const ButttonClickAnm = posed.button({
   pressable: true,
   init: { scale: 1 },
   press: { scale: 0.9 }

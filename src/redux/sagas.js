@@ -6,7 +6,8 @@ import {
   playerWin,
   playerGetCards,
   enemyGetCards,
-  playerDraw
+  playerDraw,
+  buttonsState
 } from './actions'
 import { endGameDelay, cardAnimationTime } from '../constants/animations'
 
@@ -22,7 +23,9 @@ function * startGame () {
   yield put(enemyGetCards(2))
 }
 
-function * endTurn () {
+function * endTurn (action) {
+  yield put(buttonsState(false))
+
   const state = yield select()
   const playerCards = state.cards.playerCards
   const enemyCards = state.cards.enemyCards
@@ -34,9 +37,13 @@ function * endTurn () {
 
   if (gameResult.result.win) yield put(playerWin())
   if (gameResult.result.lose) yield put(playerLose())
+
+  if (action.type === actionTypes.PLAYER_GET_CARDS) { yield put(buttonsState(true)) }
 }
 
 function * finalTurn () {
+  yield put(buttonsState(false))
+
   const state = yield select()
   // Delay to create more friendly gameplay
   yield delay(endGameDelay)
@@ -56,6 +63,8 @@ function * finalTurn () {
 }
 
 function * enemyTurn () {
+  yield put(buttonsState(false))
+
   let state = yield select()
   let enemyWillHit = gameLogic.enemyWillHit(
     state.cards.playerCards,
