@@ -22,7 +22,7 @@ export const Row = styled.div`
     props.justifyContent ? props.justifyContent : 'flex-start'};
 `
 export const Blurry = styled.div`
-  filter: blur(0.25px);
+  filter: blur(0.5px);
 `
 export const ScanLinesFilter = styled.div`
   &::before {
@@ -33,12 +33,15 @@ export const ScanLinesFilter = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    background: linear-gradient(
+        rgba(18, 16, 16, 0.03) 50%,
+        rgba(0, 0, 0, 0.11) 50%
+      ),
       linear-gradient(
         90deg,
         rgba(255, 0, 0, 0.03),
         rgba(0, 255, 0, 0.01),
-        rgba(0, 0, 255, 0.03)
+        rgba(0, 0, 255, 0.05)
       );
     z-index: 2;
     background-size: 100% 4px, 1px 100%;
