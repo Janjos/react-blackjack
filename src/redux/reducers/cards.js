@@ -3,20 +3,28 @@ import { actionTypes } from '../actions/actionTypes'
 import gameLogic, { getRandomCards } from '../../gameLogic'
 
 export default (state = initialState, action) => {
-  const { cards, cardsToPush } = getRandomCards(state.cardList, action.payload)
-
   switch (action.type) {
-    case actionTypes.PLAYER_GET_CARDS:
+    case actionTypes.PLAYER_GET_CARDS: {
+      const { cards, cardsToPush } = getRandomCards(
+        state.cardList,
+        action.payload
+      )
       return Object.assign({}, state, {
         playerCards: [...state.playerCards, ...cardsToPush],
         cardList: cards
       })
+    }
 
-    case actionTypes.ENEMY_GET_CARDS:
+    case actionTypes.ENEMY_GET_CARDS: {
+      const { cards, cardsToPush } = getRandomCards(
+        state.cardList,
+        action.payload
+      )
       return Object.assign({}, state, {
         enemyCards: [...state.enemyCards, ...cardsToPush],
         cardList: cards
       })
+    }
 
     case actionTypes.REMOVE_CARDS:
       return Object.assign({}, state, {

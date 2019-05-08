@@ -57,3 +57,10 @@ export function buttonsState (buttonState) {
     payload: buttonState
   }
 }
+
+export function makeBet (betValue) {
+  return {
+    type: actionTypes.MAKE_BET,
+    payload: betValue
+  }
+}

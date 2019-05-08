@@ -73,7 +73,7 @@ export function HUD (props) {
       <BetHud>
         <h1> bet </h1>
         <h2>
-          <span> $ </span> 100
+          <span> $ </span> {props.bet}
         </h2>
       </BetHud>
     </HudContainer>
@@ -81,5 +81,6 @@ export function HUD (props) {
 }
 
 HUD.propTypes = {
-  money: PropTypes.number.isRequired
+  money: PropTypes.number.isRequired,
+  bet: PropTypes.number.isRequired
 }

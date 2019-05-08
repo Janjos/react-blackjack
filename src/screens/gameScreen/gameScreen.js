@@ -17,6 +17,7 @@ const HandsContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
+
 const HandRow = styled.div`
   margin-top: 50px;
 `
@@ -44,9 +45,9 @@ export function GameScreen () {
     <FullScreen color={COLORS.GREEN}>
       {showNotification && <GameResultNotification result={player.result} />}
 
-      <BetModal />
+      {!game.betValue && <BetModal />}
 
-      <HUD money={player.money} />
+      <HUD money={player.money} bet={game.betValue} />
       <HandsContainer>
         <HandRow>
           <EnemyHand cards={enemyCards} showSecondCard={game.playerStand} />

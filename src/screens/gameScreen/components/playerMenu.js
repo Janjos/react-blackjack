@@ -27,8 +27,6 @@ export function PlayerMenu (props) {
     dispatch(playerStand())
   }
 
-  console.log(props)
-
   return (
     <MenuContainer>
       <Container width='100%'>

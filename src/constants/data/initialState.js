@@ -8,12 +8,13 @@ export const initialState = {
     enemyCards: []
   },
   player: {
-    money: 1000,
+    money: 500,
     result: new GameResult(false, false, false)
   },
   game: {
     gameRunning: false,
     playerStand: false,
-    buttonsEnabled: true
+    buttonsEnabled: true,
+    betValue: 0
   }
 }
