@@ -64,3 +64,10 @@ export function makeBet (betValue) {
     payload: betValue
   }
 }
+
+export function updatePlayerMoney (value) {
+  return {
+    type: actionTypes.UPDATE_MONEY,
+    payload: value
+  }
+}

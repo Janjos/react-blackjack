@@ -43,9 +43,9 @@ export function GameScreen () {
 
   return (
     <FullScreen color={COLORS.GREEN}>
-      {showNotification && <GameResultNotification result={player.result} />}
+      <GameResultNotification show={showNotification} result={player.result} />
 
-      {!game.betValue && <BetModal />}
+      <BetModal show={!game.betValue} />
 
       <HUD money={player.money} bet={game.betValue} />
       <HandsContainer>
