@@ -39,9 +39,10 @@ export function playerLose () {
   }
 }
 
-export function playerStand () {
+export function playerStand (state) {
   return {
-    type: actionTypes.STAND
+    type: actionTypes.STAND,
+    payload: state
   }
 }
 

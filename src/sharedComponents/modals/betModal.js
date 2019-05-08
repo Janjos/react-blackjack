@@ -6,7 +6,6 @@ import posed from 'react-pose'
 import { COLORS } from '../../constants/colors'
 import { makeBet } from '../../redux/actions'
 
-import { Row } from '../structureComponents'
 import { NotificationContainer } from './modalsSharedComponents'
 import { betValues } from '../../constants/betValues'
 
