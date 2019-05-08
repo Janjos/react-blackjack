@@ -16,6 +16,10 @@ const HandsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: 600px) {
+    margin-top: -4em;
+  }
 `
 
 export function GameScreen () {
