@@ -11,13 +11,14 @@ import {
   makeBet,
   updatePlayerMoney,
   resetGameResult,
-  resetCards
+  resetCards,
+  enemyGetCard
 } from './actions'
 import { endGameDelay, cardAnimationTime } from '../constants/animations'
 
 export default function * root () {
-  yield takeEvery(actionTypes.PLAYER_GET_CARDS, endTurn)
-  yield takeEvery(actionTypes.ENEMY_GET_CARDS, endTurn)
+  yield takeEvery(actionTypes.PLAYER_GET_CARD, endTurn)
+  yield takeEvery(actionTypes.ENEMY_GET_CARD, endTurn)
   yield takeEvery(actionTypes.START_GAME, startGame)
   yield takeEvery(actionTypes.STAND, enemyTurn)
   yield takeEvery(actionTypes.WIN, endGame)
@@ -46,7 +47,7 @@ function * endTurn (action) {
   if (gameResult.result.win) yield put(playerWin())
   if (gameResult.result.lose) yield put(playerLose())
 
-  if (action.type === actionTypes.PLAYER_GET_CARDS) {
+  if (action.type === actionTypes.PLAYER_GET_CARD) {
     yield put(buttonsState(true))
   }
 }
@@ -68,8 +69,8 @@ function * finalTurn () {
   )
 
   if (gameResult.result.win) yield put(playerWin())
-  if (gameResult.result.lose) yield put(playerLose())
-  if (gameResult.result.draw) yield put(playerDraw())
+  else if (gameResult.result.lose) yield put(playerLose())
+  else if (gameResult.result.draw) yield put(playerDraw())
 }
 
 function * enemyTurn () {
@@ -85,7 +86,7 @@ function * enemyTurn () {
     // Delay to create more friendly gameplay
     yield delay(cardAnimationTime)
 
-    yield put(enemyGetCards(1))
+    yield put(enemyGetCard())
     state = yield select()
     enemyWillHit = yield gameLogic.enemyWillHit(
       state.cards.playerCards,
@@ -110,10 +111,14 @@ function * endGame () {
 
 function * resetGame () {
   yield delay(endGameDelay * 2)
+
   yield put(resetCards())
+
   yield delay(cardAnimationTime)
-  yield put(resetGameResult())
+
   yield put(makeBet(0))
+  yield delay(100)
+  yield put(resetGameResult())
 
   yield startGame()
 }

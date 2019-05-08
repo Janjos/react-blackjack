@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { playerGetCards, playerStand } from '../../../redux/actions'
+import { playerGetCard, playerStand } from '../../../redux/actions'
 import PropTypes from 'prop-types'
 
 import {
@@ -20,7 +20,7 @@ export function PlayerMenu (props) {
   const dispatch = useDispatch()
 
   function handlePlayerHit () {
-    dispatch(playerGetCards(1))
+    dispatch(playerGetCard())
   }
 
   function handlePlayerStand () {

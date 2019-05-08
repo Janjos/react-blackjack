@@ -14,10 +14,17 @@ import { Blurry, ScanLinesFilter } from './sharedComponents/structureComponents'
 export default function App () {
   const sagaMiddleWare = createSagaMiddleware()
 
+  const composerEnhancer = composeWithDevTools({
+    name: `Redux`,
+    realtime: true,
+    trace: true,
+    traceLimit: 25
+  })
+
   const store = createStore(
     reducers,
     initialState,
-    composeWithDevTools(applyMiddleware(sagaMiddleWare))
+    composerEnhancer(applyMiddleware(sagaMiddleWare))
   )
 
   sagaMiddleWare.run(rootSaga)

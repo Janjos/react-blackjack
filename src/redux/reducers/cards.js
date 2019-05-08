@@ -26,6 +26,22 @@ export default (state = initialState, action) => {
       })
     }
 
+    case actionTypes.PLAYER_GET_CARD: {
+      const { cards, cardsToPush } = getRandomCards(state.cardList, 1)
+      return Object.assign({}, state, {
+        playerCards: [...state.playerCards, ...cardsToPush],
+        cardList: cards
+      })
+    }
+
+    case actionTypes.ENEMY_GET_CARD: {
+      const { cards, cardsToPush } = getRandomCards(state.cardList, 1)
+      return Object.assign({}, state, {
+        enemyCards: [...state.enemyCards, ...cardsToPush],
+        cardList: cards
+      })
+    }
+
     case actionTypes.REMOVE_CARDS:
       return Object.assign({}, state, {
         cards: gameLogic.removeCardfromPile(state.cardList, action.payload)
@@ -34,8 +50,8 @@ export default (state = initialState, action) => {
     case actionTypes.RESET_GAME_CARDS:
       return Object.assign({}, state, {
         cardList: initialState.cards.cardList,
-        playerCards: initialState.cards.playerCards,
-        enemyCards: initialState.cards.enemyCards
+        playerCards: [],
+        enemyCards: []
       })
 
     default:

@@ -29,9 +29,6 @@ export function GameScreen () {
     game: state.game
   }))
 
-  const enemyCards = cards.enemyCards
-  const playerCards = cards.playerCards
-
   // TODO refactory start game logic
   const dispatch = useDispatch()
   if (!game.gameRunning) {
@@ -56,10 +53,13 @@ export function GameScreen () {
 
       <HandsContainer>
         <div>
-          <EnemyHand cards={enemyCards} showSecondCard={game.playerStand} />
+          <EnemyHand
+            cards={cards.enemyCards}
+            showSecondCard={game.playerStand}
+          />
         </div>
         <div>
-          <PlayerHand cards={playerCards} />
+          <PlayerHand cards={cards.playerCards} />
         </div>
       </HandsContainer>
       <PlayerMenu enabled={game.buttonsEnabled} />

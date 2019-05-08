@@ -20,6 +20,18 @@ export function enemyGetCards (numberOfCards) {
   }
 }
 
+export function playerGetCard () {
+  return {
+    type: actionTypes.PLAYER_GET_CARD
+  }
+}
+
+export function enemyGetCard () {
+  return {
+    type: actionTypes.ENEMY_GET_CARD
+  }
+}
+
 export function removeCard (cardId) {
   return {
     type: actionTypes.REMOVE_CARD,
