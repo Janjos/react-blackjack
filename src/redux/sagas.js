@@ -112,6 +112,7 @@ function * resetGame () {
 
   yield delay(endGameDelay * 2)
   yield put(resetCards())
+  yield delay(cardAnimationTime)
   yield put(resetGameResult())
 
   yield put(makeBet(0))
