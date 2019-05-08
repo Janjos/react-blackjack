@@ -74,6 +74,12 @@ export const ScanLinesFilter = styled.div`
     animation: flicker 0.15s infinite;
   }
 
+  @media (max-width: 600px) {
+    &::before {
+      display: none;
+    }
+  }
+
   @keyframes flicker {
     0% {
       opacity: 0.27;
