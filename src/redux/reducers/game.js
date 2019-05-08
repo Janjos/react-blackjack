@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
       })
     case actionTypes.STAND:
       return Object.assign({}, state, {
-        playerStand: action.payload
+        playerStand: true
       })
     case actionTypes.BUTTONS_ENABLED:
       return Object.assign({}, state, {
@@ -17,7 +17,8 @@ export default (state = initialState, action) => {
       })
     case actionTypes.MAKE_BET:
       return Object.assign({}, state, {
-        betValue: action.payload
+        betValue: action.payload,
+        playerStand: false
       })
     default:
       return state

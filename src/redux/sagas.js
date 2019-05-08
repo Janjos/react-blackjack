@@ -11,8 +11,7 @@ import {
   makeBet,
   updatePlayerMoney,
   resetGameResult,
-  resetCards,
-  playerStand
+  resetCards
 } from './actions'
 import { endGameDelay, cardAnimationTime } from '../constants/animations'
 
@@ -27,6 +26,7 @@ export default function * root () {
 }
 
 function * startGame () {
+  yield put(buttonsState(true))
   yield put(playerGetCards(2))
   yield put(enemyGetCards(2))
 }
@@ -109,9 +109,6 @@ function * endGame () {
 }
 
 function * resetGame () {
-  yield put(buttonsState(true))
-  yield put(playerStand(false))
-
   yield delay(endGameDelay * 2)
   yield put(resetCards())
   yield delay(cardAnimationTime)

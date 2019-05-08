@@ -24,7 +24,7 @@ export function PlayerMenu (props) {
   }
 
   function handlePlayerStand () {
-    dispatch(playerStand(true))
+    dispatch(playerStand())
   }
 
   return (
