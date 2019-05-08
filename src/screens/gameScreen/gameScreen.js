@@ -48,6 +48,7 @@ export function GameScreen () {
       <BetModal show={!game.betValue} />
 
       <HUD money={player.money} bet={game.betValue} />
+
       <HandsContainer>
         <HandRow>
           <EnemyHand cards={enemyCards} showSecondCard={game.playerStand} />

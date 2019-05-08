@@ -71,3 +71,15 @@ export function updatePlayerMoney (value) {
     payload: value
   }
 }
+
+export function resetGameResult () {
+  return {
+    type: actionTypes.RESET_GAME_RESULT
+  }
+}
+
+export function resetCards () {
+  return {
+    type: actionTypes.RESET_GAME_CARDS
+  }
+}

@@ -9,7 +9,9 @@ import {
   playerDraw,
   buttonsState,
   makeBet,
-  updatePlayerMoney
+  updatePlayerMoney,
+  resetGameResult,
+  resetCards
 } from './actions'
 import { endGameDelay, cardAnimationTime } from '../constants/animations'
 
@@ -18,9 +20,9 @@ export default function * root () {
   yield takeEvery(actionTypes.ENEMY_GET_CARDS, endTurn)
   yield takeEvery(actionTypes.START_GAME, startGame)
   yield takeEvery(actionTypes.STAND, enemyTurn)
-  yield takeEvery(actionTypes.WIN, updateMoney)
-  yield takeEvery(actionTypes.LOSE, updateMoney)
-  yield takeEvery(actionTypes.DRAW, updateMoney)
+  yield takeEvery(actionTypes.WIN, endGame)
+  yield takeEvery(actionTypes.LOSE, endGame)
+  yield takeEvery(actionTypes.DRAW, endGame)
 }
 
 function * startGame () {
@@ -93,9 +95,8 @@ function * enemyTurn () {
   yield finalTurn()
 }
 
-function * updateMoney () {
+function * endGame () {
   let state = yield select()
-  console.log(state)
 
   if (state.player.result.win) {
     yield put(updatePlayerMoney(state.game.betValue + state.player.money))
@@ -103,9 +104,17 @@ function * updateMoney () {
     yield put(updatePlayerMoney(state.player.money + (0 - state.game.betValue)))
   }
 
-  yield resetBet()
+  yield resetGame()
 }
 
-function * resetBet () {
+function * resetGame () {
+  yield put(buttonsState(true))
+
+  yield delay(endGameDelay * 2)
+  yield put(resetCards())
+  yield put(resetGameResult())
+
   yield put(makeBet(0))
+
+  yield startGame()
 }

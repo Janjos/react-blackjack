@@ -31,6 +31,13 @@ export default (state = initialState, action) => {
         cards: gameLogic.removeCardfromPile(state.cardList, action.payload)
       })
 
+    case actionTypes.RESET_GAME_CARDS:
+      return Object.assign({}, state, {
+        cardList: initialState.cards.cardList,
+        playerCards: initialState.cards.playerCards,
+        enemyCards: initialState.cards.enemyCards
+      })
+
     default:
       return state
   }

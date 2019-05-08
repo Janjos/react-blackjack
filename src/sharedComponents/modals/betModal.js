@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -9,7 +10,12 @@ import { Container, Row } from '../structureComponents'
 import { NotificationContainer } from './modalsSharedComponents'
 import { betValues } from '../../constants/betValues'
 
-const Modal = styled.div`
+const ModalAnm = posed.div({
+  visible: { opacity: 1, transition: { duration: 300 } },
+  hidden: { opacity: 0 }
+})
+
+const Modal = styled(ModalAnm)`
   display: inline-block;
   padding: 40px 70px;
   background: ${COLORS.SHADOW};
@@ -61,7 +67,7 @@ const BetOption = styled(BetOptionAnm)`
   margin: 0 15px;
 `
 
-export function BetModal () {
+export function BetModal (props) {
   const dispatch = useDispatch()
 
   const handleBetOptionClick = value => {
@@ -69,29 +75,35 @@ export function BetModal () {
   }
 
   return (
-    <NotificationContainer>
-      <Modal>
-        <ModalText>
-          <h1> PLace your bet! </h1>
-        </ModalText>
-        <Container display='flex' flexDirection='row'>
-          <Row display='flex' justifyContent='space-between'>
-            {betValues.map(value => (
-              <BetOption
-                key={value}
-                onClick={() => handleBetOptionClick(value)}
-              >
-                <ModalText>
-                  <h2>
-                    <span>$</span>
-                    {value}
-                  </h2>
-                </ModalText>
-              </BetOption>
-            ))}
-          </Row>
-        </Container>
-      </Modal>
-    </NotificationContainer>
+    props.show && (
+      <NotificationContainer pose='visible' initialPose='hidden'>
+        <Modal>
+          <ModalText>
+            <h1> PLace your bet! </h1>
+          </ModalText>
+          <Container display='flex' flexDirection='row'>
+            <Row display='flex' justifyContent='space-between'>
+              {betValues.map(value => (
+                <BetOption
+                  key={value}
+                  onClick={() => handleBetOptionClick(value)}
+                >
+                  <ModalText>
+                    <h2>
+                      <span>$</span>
+                      {value}
+                    </h2>
+                  </ModalText>
+                </BetOption>
+              ))}
+            </Row>
+          </Container>
+        </Modal>
+      </NotificationContainer>
+    )
   )
+}
+
+BetModal.propTypes = {
+  show: PropTypes.bool
 }
