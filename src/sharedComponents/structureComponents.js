@@ -7,6 +7,11 @@ export const FullScreen = styled.div`
   height: 100vh;
   position: relative;
   background: ${props => props.color};
+  display: ${props => (props.display ? props.display : 'block')};
+  flex-direction: ${props =>
+    props.flexDirection ? props.flexDirection : 'initial'};
+  justify-content: ${props =>
+    props.justifyContent ? props.justifyContent : 'flex-start'};
 `
 
 export const Container = styled.div`

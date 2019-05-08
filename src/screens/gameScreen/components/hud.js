@@ -7,6 +7,7 @@ const HudContainer = styled.div`
   position: absolute;
   top: 1.25em;
   left: 1.25em;
+  z-index: 8;
 
   & h1,
   h2,

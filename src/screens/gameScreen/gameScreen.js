@@ -18,10 +18,6 @@ const HandsContainer = styled.div`
   justify-content: space-between;
 `
 
-const HandRow = styled.div`
-  margin-top: 3.12em;
-`
-
 export function GameScreen () {
   const { cards, player, game } = useSelector(state => ({
     cards: state.cards,
@@ -42,7 +38,12 @@ export function GameScreen () {
     player.result.win || player.result.lose || player.result.draw
 
   return (
-    <FullScreen color={COLORS.GREEN}>
+    <FullScreen
+      color={COLORS.GREEN}
+      display='flex'
+      flexDirection='column'
+      justifyContent='center'
+    >
       <GameResultNotification show={showNotification} result={player.result} />
 
       <BetModal show={!game.betValue} />
@@ -50,12 +51,12 @@ export function GameScreen () {
       <HUD money={player.money} bet={game.betValue} />
 
       <HandsContainer>
-        <HandRow>
+        <div>
           <EnemyHand cards={enemyCards} showSecondCard={game.playerStand} />
-        </HandRow>
-        <HandRow>
+        </div>
+        <div>
           <PlayerHand cards={playerCards} />
-        </HandRow>
+        </div>
       </HandsContainer>
       <PlayerMenu enabled={game.buttonsEnabled} />
     </FullScreen>

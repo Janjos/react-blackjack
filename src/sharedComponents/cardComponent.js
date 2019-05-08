@@ -10,7 +10,11 @@ const CardContainer = styled.div`
     width: 6.5em;
     display: block;
     position: relative
-    filter: drop-shadow(-0.25em 0.31em 0em ${COLORS.SHADOW});
+    filter: drop-shadow(-0.26em 0.32em 0em ${COLORS.SHADOW});
+
+    @media (max-width: 640px){
+      width: 6em;
+    }
   }
 `
 
