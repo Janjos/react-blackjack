@@ -16,7 +16,7 @@ export function PlayerHand (props) {
     <Container display='flex'>
       <Row display='flex' justifyContent='center'>
         {props.cards.map((card, i) => (
-          <Offset key={card.id} left='-20px' top={`-${8 * i}px`}>
+          <Offset key={card.id} left='-1.25em' top={`-${0.5 * i}em`}>
             <CardComponent image={card.image} name={card.name} />
           </Offset>
         ))}

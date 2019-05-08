@@ -12,7 +12,7 @@ import {
 
 const MenuContainer = styled.div`
   position: fixed;
-  bottom: 20px;
+  bottom: 1.25em;
   width: 100%;
 `
 

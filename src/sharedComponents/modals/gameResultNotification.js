@@ -16,9 +16,9 @@ const ResultText = posed.h1({
 })
 
 const ResultTextStyled = styled(ResultText)`
-  font-size: 22px;
+  font-size: 1.37em;
   color: white;
-  text-shadow: -2px 4px 0px ${props => props.color};
+  text-shadow: -0.125em 0.25em 0em ${props => props.color};
   margin: 0;
 `
 

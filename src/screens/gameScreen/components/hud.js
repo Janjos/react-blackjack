@@ -5,58 +5,63 @@ import { COLORS } from '../../../constants/colors'
 
 const HudContainer = styled.div`
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 1.25em;
+  left: 1.25em;
+  z-index: 8;
 
   & h1,
   h2,
-  span {
+  p {
     color: ${COLORS.WHITE};
     margin: 0;
-    text-shadow: -5px 5px 0px ${COLORS.SHADOW};
+    text-shadow: -4px 4px 0px ${COLORS.SHADOW};
   }
 `
 
 const MoneyHud = styled.div`
   h1 {
     margin: 0;
-    font-size: 16px;
+    font-size: 1em;
     color: ${COLORS.WHITE};
   }
 
   h2 {
     margin: 0;
-    font-size: 36px;
+    font-size: 2.25em;
     color: ${COLORS.WHITE};
-    line-height: 30px;
+    line-height: 1.87em;
+    display: inline;
   }
 
-  span {
+  p {
+    display: inline;
     margin: 0;
-    font-size: 18px;
+    font-size: 1em;
     color: ${COLORS.WHITE};
   }
 `
 
 const BetHud = styled.div`
-  margin-top: 25px;
+  margin-top: 1.56em;
 
   h1 {
     margin: 0;
-    font-size: 16px;
+    font-size: 1em;
     color: ${COLORS.WHITE};
   }
 
   h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 1.5em;
     color: ${COLORS.WHITE};
-    line-height: 24px;
+    line-height: 1.5em;
+    display: inline;
   }
 
-  span {
+  p {
+    display: inline;
     margin: 0;
-    font-size: 14px;
+    font-size: 1em;
     color: ${COLORS.WHITE};
   }
 `
@@ -66,15 +71,13 @@ export function HUD (props) {
     <HudContainer>
       <MoneyHud>
         <h1> money </h1>
-        <h2>
-          <span> $ </span> {props.money}
-        </h2>
+        <p>$</p>
+        <h2>{props.money}</h2>
       </MoneyHud>
       <BetHud>
         <h1> bet </h1>
-        <h2>
-          <span> $ </span> {props.bet}
-        </h2>
+        <p>$</p>
+        <h2>{props.bet}</h2>
       </BetHud>
     </HudContainer>
   )

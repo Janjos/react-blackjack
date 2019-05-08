@@ -6,7 +6,7 @@ import posed from 'react-pose'
 import { COLORS } from '../../constants/colors'
 import { makeBet } from '../../redux/actions'
 
-import { Container, Row } from '../structureComponents'
+import { Row } from '../structureComponents'
 import { NotificationContainer } from './modalsSharedComponents'
 import { betValues } from '../../constants/betValues'
 
@@ -17,11 +17,15 @@ const ModalAnm = posed.div({
 
 const Modal = styled(ModalAnm)`
   display: inline-block;
-  padding: 40px 70px;
+  padding: 2.5em 4.37em;
   background: ${COLORS.SHADOW};
   z-index: 9;
-  box-shadow: -8px 8px 0 ${COLORS.SHADOW};
-  border: solid 6px ${COLORS.WHITE};
+  box-shadow: -0.5em 0.5em 0 ${COLORS.SHADOW};
+  border: solid 0.37em ${COLORS.WHITE};
+
+  @media (max-width: 640px) {
+    padding: 1.3em 1.6em;
+  }
 `
 
 const ModalText = styled.div`
@@ -34,22 +38,37 @@ const ModalText = styled.div`
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 1.25em;
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 1.75em;
     font-family: Fipps;
 
     span {
       font-family: Fipps;
-      font-size: 18px;
+      font-size: 0.7em;
     }
   }
 
-  span {
-    margin: 0;
-  }
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.2em;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+    }
+`
+
+const BetOptionsContainer = styled.div`
+  padding: 0.93em 1.25em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
 `
 
 const BetOptionAnm = posed.div({
@@ -64,7 +83,7 @@ const BetOptionAnm = posed.div({
 
 const BetOption = styled(BetOptionAnm)`
   display: inline-block;
-  margin: 0 15px;
+  margin: 0 0.93em;
 `
 
 export function BetModal (props) {
@@ -81,23 +100,21 @@ export function BetModal (props) {
           <ModalText>
             <h1> PLace your bet! </h1>
           </ModalText>
-          <Container display='flex' flexDirection='row'>
-            <Row display='flex' justifyContent='space-between'>
-              {betValues.map(value => (
-                <BetOption
-                  key={value}
-                  onClick={() => handleBetOptionClick(value)}
-                >
-                  <ModalText>
-                    <h2>
-                      <span>$</span>
-                      {value}
-                    </h2>
-                  </ModalText>
-                </BetOption>
-              ))}
-            </Row>
-          </Container>
+          <BetOptionsContainer>
+            {betValues.map(value => (
+              <BetOption
+                key={value}
+                onClick={() => handleBetOptionClick(value)}
+              >
+                <ModalText>
+                  <h2>
+                    <span>$</span>
+                    {value}
+                  </h2>
+                </ModalText>
+              </BetOption>
+            ))}
+          </BetOptionsContainer>
         </Modal>
       </NotificationContainer>
     )

@@ -7,10 +7,14 @@ const cardBack = require('../assets/images/cards/back01.gif')
 
 const CardContainer = styled.div`
   & img {
-    width: 100px;
+    width: 6.5em;
     display: block;
     position: relative
-    filter: drop-shadow(-4px 5px 0px ${COLORS.SHADOW});
+    filter: drop-shadow(-0.26em 0.32em 0em ${COLORS.SHADOW});
+
+    @media (max-width: 640px){
+      width: 6em;
+    }
   }
 `
 
