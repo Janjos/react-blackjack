@@ -13,7 +13,7 @@ export const Container = styled.div`
   max-width: ${props => (props.width ? props.width : '100%')};
   width: ${props => (props.width ? props.width : '100%')};
   height: ${props => (props.height ? props.height : 'auto')};
-  padding: 15px 20px;
+  padding: 0.93em 1.25em;
   display: ${props => (props.display ? props.display : 'block')};
   flex-direction: ${props =>
     props.flexDirection ? props.flexDirection : 'initial'};
@@ -26,7 +26,7 @@ export const Row = styled.div`
     props.justifyContent ? props.justifyContent : 'flex-start'};
 `
 export const Blurry = styled.div`
-  filter: blur(0.5px);
+  filter: blur(0.03em);
 `
 export const ButttonClickAnm = posed.button({
   pressable: true,
@@ -36,11 +36,12 @@ export const ButttonClickAnm = posed.button({
 
 export const BasicButton = styled(ButttonClickAnm)`
   background: #eef;
-  box-shadow: inset 0 -3px 0 ${COLORS.LIGHT_BLUE};
-  border: solid 3px #333;
+  box-shadow: inset 0 -0.188em 0 ${COLORS.LIGHT_BLUE};
+  border: solid 0.188em #333;
   color: #333;
-  padding: 8px 20px;
-  margin: 0 8px;
+  padding: 0.5em 1.25em;
+  margin: 0 0.5em;
+  font-size: 1em;
 `
 
 export const ScanLinesFilter = styled.div`
@@ -63,7 +64,7 @@ export const ScanLinesFilter = styled.div`
         rgba(0, 0, 255, 0.05)
       );
     z-index: 2;
-    background-size: 100% 4px, 1px 100%;
+    background-size: 100% 0.25em, 0.06em 100%;
     pointer-events: none;
     animation: flicker 0.15s infinite;
   }

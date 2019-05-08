@@ -19,7 +19,7 @@ const HandsContainer = styled.div`
 `
 
 const HandRow = styled.div`
-  margin-top: 50px;
+  margin-top: 3.12em;
 `
 
 export function GameScreen () {

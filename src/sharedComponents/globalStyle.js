@@ -15,6 +15,35 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    font-size: 16px;
+
+    @media (max-width: 640px){
+      font-size: 14px;
+    }
+
+    @media (min-width: 640px){
+        font-size: 16px;
+      }
+       
+      @media (min-width: 768px){
+        font-size: 16px;
+      }
+       
+      @media (min-width: 1024px){
+        font-size: 18px;
+      }
+       
+      @media (min-width: 1200px){
+        font-size: 20px;
+      }
+
+      @media (min-width: 1200px){
+        font-size: 20px;
+      }
+
+      @media (min-width: 1900px){
+        font-size: 26px;
+      }
   }
 
   img {
