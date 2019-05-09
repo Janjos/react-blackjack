@@ -19,6 +19,11 @@ export default (state = initialState, action) => {
         result: new GameResult(false, false, true)
       })
 
+    case actionTypes.UPDATE_GAME_RESULT:
+      return Object.assign({}, state, {
+        result: action.payload
+      })
+
     case actionTypes.RESET_GAME_RESULT:
       return Object.assign({}, state, {
         result: new GameResult(false, false, false)

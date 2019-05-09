@@ -39,27 +39,16 @@ export function removeCard (cardId) {
   }
 }
 
-export function playerWin () {
+export function updateGameResult (result) {
   return {
-    type: actionTypes.WIN
-  }
-}
-
-export function playerLose () {
-  return {
-    type: actionTypes.LOSE
+    type: actionTypes.UPDATE_GAME_RESULT,
+    payload: result
   }
 }
 
 export function playerStand () {
   return {
     type: actionTypes.STAND
-  }
-}
-
-export function playerDraw () {
-  return {
-    type: actionTypes.DRAW
   }
 }
 

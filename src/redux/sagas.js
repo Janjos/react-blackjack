@@ -2,34 +2,36 @@ import { put, takeEvery, select, delay } from 'redux-saga/effects'
 import { actionTypes } from './actions/actionTypes'
 import gameLogic from '../gameLogic'
 import {
-  playerLose,
-  playerWin,
   playerGetCards,
   enemyGetCards,
-  playerDraw,
   buttonsState,
   makeBet,
   updatePlayerMoney,
   resetGameResult,
   resetCards,
-  enemyGetCard
+  enemyGetCard,
+  updateGameResult
 } from './actions'
 import { endGameDelay, cardAnimationTime } from '../constants/animations'
+import { GameResult } from '../classes/GameResult'
 
 export default function * root () {
   yield takeEvery(actionTypes.PLAYER_GET_CARD, endTurn)
   yield takeEvery(actionTypes.ENEMY_GET_CARD, endTurn)
   yield takeEvery(actionTypes.START_GAME, startGame)
   yield takeEvery(actionTypes.STAND, enemyTurn)
-  yield takeEvery(actionTypes.WIN, endGame)
-  yield takeEvery(actionTypes.LOSE, endGame)
-  yield takeEvery(actionTypes.DRAW, endGame)
+  yield takeEvery(actionTypes.UPDATE_GAME_RESULT, endGame)
 }
 
 function * startGame () {
   yield put(buttonsState(true))
-  yield put(playerGetCards(2))
-  yield put(enemyGetCards(2))
+
+  const state = yield select()
+  const playerCards = state.cards.playerCards
+  const enemyCards = state.cards.enemyCards
+
+  if (playerCards.length === 0) yield put(playerGetCards(2))
+  if (enemyCards.length === 0) yield put(enemyGetCards(2))
 }
 
 function * endTurn (action) {
@@ -44,8 +46,11 @@ function * endTurn (action) {
   // Delay to create more friendly gameplay
   yield delay(endGameDelay)
 
-  if (gameResult.result.win) yield put(playerWin())
-  if (gameResult.result.lose) yield put(playerLose())
+  if (gameResult.result.win) {
+    yield put(updateGameResult(new GameResult(true, false, false)))
+  } else if (gameResult.result.lose) {
+    yield put(updateGameResult(new GameResult(false, true, false)))
+  }
 
   if (action.type === actionTypes.PLAYER_GET_CARD) {
     yield put(buttonsState(true))
@@ -68,16 +73,20 @@ function * finalTurn () {
     gameResult.enemyPoints
   )
 
-  if (gameResult.result.win) yield put(playerWin())
-  else if (gameResult.result.lose) yield put(playerLose())
-  else if (gameResult.result.draw) yield put(playerDraw())
+  if (gameResult.result.win) {
+    yield put(updateGameResult(new GameResult(true, false, false)))
+  } else if (gameResult.result.lose) {
+    yield put(updateGameResult(new GameResult(false, true, false)))
+  } else if (gameResult.result.draw) {
+    yield put(updateGameResult(new GameResult(false, false, true)))
+  }
 }
 
 function * enemyTurn () {
   yield put(buttonsState(false))
 
   let state = yield select()
-  let enemyWillHit = gameLogic.enemyWillHit(
+  let enemyWillHit = yield gameLogic.enemyWillHit(
     state.cards.playerCards,
     state.cards.enemyCards
   )
@@ -94,7 +103,7 @@ function * enemyTurn () {
     )
   }
 
-  yield finalTurn()
+  yield * finalTurn()
 }
 
 function * endGame () {
@@ -106,7 +115,7 @@ function * endGame () {
     yield put(updatePlayerMoney(state.player.money + (0 - state.game.betValue)))
   }
 
-  yield resetGame()
+  yield * resetGame()
 }
 
 function * resetGame () {
@@ -120,5 +129,5 @@ function * resetGame () {
   yield delay(100)
   yield put(resetGameResult())
 
-  yield startGame()
+  yield * startGame()
 }
