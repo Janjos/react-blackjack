@@ -7,5 +7,5 @@ Demo here: [https://react-blackjack-32169.firebaseapp.com/](react-blackjack)
 Use `npm start` to run the game in [http://localhost:3000](http://localhost:3000)
 
 ### Screenshots
-![Game play screenshot](https://github.com/Janjos/react-blackjack/tree/master/src/assets/images/screenshots/sc1.png)
-![Game play screenshot](https://github.com/Janjos/react-blackjack/tree/master/src/assets/images/screenshots/sc2.png)
+![Game play screenshot](src/assets/images/screenshots/sc1.png)
+![Game play screenshot](/src/assets/images/screenshots/sc2.png)
